@@ -1,0 +1,37 @@
+{
+  "name": "apickfs",
+  "version": "1.0.0",
+  "description": "Modern and Minimal File system for Nodejs using promises and async await. No callback hell. No dependency hell.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apickjs/apickFS.git"
+  },
+  "engines": {
+    "node": ">=12.14.0",
+    "npm": ">=6.13.4"
+  },
+  "keywords": [
+    "fs",
+    "filesystem",
+    "fs.promises",
+    "fsPromise",
+    "async",
+    "await",
+    "promse",
+    "node",
+    "nodejs",
+    "file",
+    "directory",
+    "folders"
+  ],
+  "author": "Vivek M Agarwal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/apickjs/apickFS/issues"
+  },
+  "homepage": "https://github.com/apickjs/apickFS#readme"
+}
