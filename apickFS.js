@@ -6,8 +6,16 @@ const storageHander = require('./storageHandler');
 const writeStorage = require('./writeStorage');
 const removeStorage = require('./removeStorage');
 const readStorage = require('./readStorage');
+const fileOrFolderExists = require('./fileOrFolderExists');
+const removeStorageRecursively = require('./removeStorageRecursively');
 
 const apickJsonDb = {};
+
+/**
+ * returns a promise that resolves into true if it exists and false if it doesnot exist.
+ * @param {string} storagePath full path to the file or directory. if file please include extension.
+ */
+apickJsonDb.fileOrFolderExists = fileOrFolderExists;
 
 /**
  * returns a promise that resolves into a object with two fields exists and type
@@ -52,6 +60,12 @@ apickJsonDb.writeStorage = writeStorage;
  *   });
  */
 apickJsonDb.removeStorage = removeStorage;
+
+/**
+ * The directory and its content will be deleted recursively.
+ * @param {*} directoryPath full path to directory.
+ */
+apickJsonDb.removeStorageRecursively = removeStorageRecursively;
 
 /**
  * @param {*} directoryPath full path to directory.
