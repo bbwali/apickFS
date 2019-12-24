@@ -3,7 +3,7 @@
 </h1>
 
 <h3 align="center">
-  ⚛️ 📄 🚀
+  ✍🏻 📄 🍭
 </h3>
 <h3 align="center">
   Modern File Storage library for Nodejs v12.14.0 and above. βETA release
@@ -27,13 +27,14 @@
 
 ## Why ApickFS:
 
-- **Based on fs.promises**
+- **Based on cutting edge fs.promises**
 - **Async Awiat based code**
 - **No outdated dependencies**
 - **Utilising latest features of Nodejs 12.14.0 Long Term released**
 - **Minimal base library**
 - **Easy to extend**
 - **Easy to read source code**
+- **Automatic JSON parsing**
 
 <br>
 
@@ -48,7 +49,32 @@
 
 <br>
 
-## 🚀 Examples
+## Parameter Combinations :
+
+| Parameter Combinations                        | result                      | Description                                              |
+| --------------------------------------------- | --------------------------- | -------------------------------------------------------- |
+| `writeStorage(directoryPath)`                 | Success, Messge             | Creates directory                                        |
+| `writeStorage(directoryPath , fieName)`       | Success, Messge             | Creates or Truncates file                                |
+| `writeStorage(directoryPath , fieName, data)` | Success, Messge             | Creates file. Adds or Overwrites file content with data. |
+| `readStorage(directoryPath, fileName)`        | Success, Messge, Data       | Reads file                                               |
+| `removeStorage(directoryPath)`                | Success, Messge             | Removes directory                                        |
+| `removeStorage(directoryPath , fieName)`      | Success, Messge             | removes file                                             |
+| `removeStorage(directoryPath,null,true)`      | Success, Messge             | Removes directory recursively                            |
+| `removeStorageRecursively(directoryPath)`     | Success, Messge             | Removes directory recursively                            |
+| `fileOrFolderExists(<directory/file> path)`   | true/false                  | Checks if a directory or a file exists                   |
+| `storageHander(<directory/file> path)`        | true/false , file/directory | Checks if a directory or a file exists and its type.     |
+
+<br>
+
+## Important Notes
+
+- ApickFS requires Node 12.14.0 LTS
+- Feel free to create a github issue if required.
+- It will be great if every Pull request is accompanied by a github issue.
+
+<br>
+
+## 🤹🏻‍♂️ Examples / Tutorial
 
 1. **Install the ApickFS file Storage.**
 
