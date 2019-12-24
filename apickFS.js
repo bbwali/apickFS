@@ -10,12 +10,29 @@ const fileOrFolderExists = require('./fileOrFolderExists');
 const removeStorageRecursively = require('./removeStorageRecursively');
 
 const apickJsonDb = {};
+const middlewares = [];
+
+/**
+ * @param {string} functionName
+ * @param {function} functionBody
+ */
+apickJsonDb.attachFunction = function(functionName, functionBody) {
+  middlewares.push({ functionName, functionBody });
+  apickJsonDb[functionName] = functionBody;
+};
+
+/**
+ * list all attached functions
+ */
+apickJsonDb.listAttachedFunctions = function() {
+  console.log(middlewares);
+};
 
 /**
  * returns a promise that resolves into true if it exists and false if it doesnot exist.
  * @param {string} storagePath full path to the file or directory. if file please include extension.
  */
-apickJsonDb.fileOrFolderExists = fileOrFolderExists;
+apickJsonDb.attachFunction('fileOrFolderExists', fileOrFolderExists);
 
 /**
  * returns a promise that resolves into a object with two fields exists and type
@@ -23,7 +40,7 @@ apickJsonDb.fileOrFolderExists = fileOrFolderExists;
  * type will be 'file' for file or 'directory' for directory else null.
  * @param {string} storagePath full path to the file or directory. if file please include extension.
  */
-apickJsonDb.storageHander = storageHander;
+apickJsonDb.attachFunction('storageHander', storageHander);
 
 /**
  * if filename is provided and it exists then data sent is null then the file will made empty.
@@ -44,7 +61,7 @@ apickJsonDb.storageHander = storageHander;
  * ** NOTE ** : if you are trying to store JSON, you must use JSON.stringify to stringify the JSON DATA else it will be coerced to [object object]
  *
  */
-apickJsonDb.writeStorage = writeStorage;
+apickJsonDb.attachFunction('writeStorage', writeStorage);
 
 /**
  * @param {string} storagePath full path of directory or file including extension for files
@@ -59,13 +76,16 @@ apickJsonDb.writeStorage = writeStorage;
  *     console.log(e);
  *   });
  */
-apickJsonDb.removeStorage = removeStorage;
+apickJsonDb.attachFunction('removeStorage', removeStorage);
 
 /**
  * The directory and its content will be deleted recursively.
  * @param {*} directoryPath full path to directory.
  */
-apickJsonDb.removeStorageRecursively = removeStorageRecursively;
+apickJsonDb.attachFunction(
+  'removeStorageRecursively',
+  removeStorageRecursively
+);
 
 /**
  * @param {*} directoryPath full path to directory.
@@ -79,7 +99,6 @@ apickJsonDb.removeStorageRecursively = removeStorageRecursively;
  *   console.log(e);
  * });
  */
-
-apickJsonDb.readStorage = readStorage;
+apickJsonDb.attachFunction('readStorage', readStorage);
 
 module.exports = apickJsonDb;
