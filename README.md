@@ -35,6 +35,7 @@
 - **Easy to extend**
 - **Easy to read source code**
 - **Automatic JSON parsing**
+- **Auto Subdirectory creation**
 
 <br>
 

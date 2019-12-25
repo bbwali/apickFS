@@ -24,7 +24,8 @@ module.exports = async function writeStorage(
   // if directory doesnot exists then create directory and file.
   if (!directoryExists) {
     try {
-      await fsp.mkdir(directoryPath);
+      await fsp.mkdir(directoryPath, { recursive: true });
+
       if (fileName) {
         await fsp.writeFile(
           path.join(directoryPath, fileName),
