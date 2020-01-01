@@ -20,13 +20,14 @@
     <img src="https://img.shields.io/npm/v/apickfs.svg" alt="Current npm package version." />
   </a>
 
+  <a href="https://www.linkedin.com/in/vivmagarwal/">
+    <img src="https://img.shields.io/badge/linkedin-in-blue?label=Follow%20@vivmagarwal" alt="Follow @vivmagarwal" />
+  </a>
+  
   <a href="https://twitter.com/intent/follow?screen_name=vivmagarwal">
     <img src="https://img.shields.io/twitter/follow/vivmagarwal.svg?label=Follow%20@vivmagarwal" alt="Follow @vivmagarwal" />
   </a>
 
-  <a href="https://www.linkedin.com/in/vivmagarwal/">
-    <img src="https://img.shields.io/badge/linkedin-in-blue?label=Follow%20@vivmagarwal" alt="Follow @vivmagarwal" />
-  </a>
 </p>
 
 ## Why ApickFS:
