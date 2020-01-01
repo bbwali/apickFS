@@ -8,8 +8,11 @@ const removeStorage = require('./removeStorage');
 const readStorage = require('./readStorage');
 const fileOrFolderExists = require('./fileOrFolderExists');
 const removeStorageRecursively = require('./removeStorageRecursively');
+const readNthLine = require('./readNthLine');
 
 const apickJsonDb = {};
+
+apickJsonDb.readNthLine = readNthLine;
 
 /**
  * returns a promise that resolves into true if it exists and false if it doesnot exist.
