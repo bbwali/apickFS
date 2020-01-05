@@ -1,12 +1,12 @@
 <h1 align="center">
-  ApickFS (βETA)
+  ApickFS
 </h1>
 
 <h3 align="center">
   ✍🏻 📄 🍭
 </h3>
 <h3 align="center">
-  Modern File Storage library for Nodejs v12.14.0 and above. βETA release
+  Modern File Storage library for Nodejs v12.14.0 and above.
 </h3>
 <p align="center">
   ApickFS is a free and open source File System library based on Node's fs.promises() that helps developers ditch callbacks and outdated depencencies.

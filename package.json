@@ -1,6 +1,6 @@
 {
   "name": "apickfs",
-  "version": "12.0.4",
+  "version": "12.0.5",
   "description": "Modern and Minimal File system for Nodejs using promises and async await. No callback hell. No dependency hell.",
   "main": "index.js",
   "scripts": {
