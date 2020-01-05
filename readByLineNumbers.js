@@ -19,6 +19,16 @@ module.exports = function readByLineNumbers(
   let directoryExists = false;
   let fileExists = false;
 
+  console.log('lineNumbers', lineNumbers);
+
+  if (lineNumbers && !Array.isArray(lineNumbers)) {
+    let temp = [];
+    temp.push(lineNumbers);
+    lineNumbers = temp;
+  }
+
+  console.log('lineNumbers', lineNumbers);
+
   lineNumbers.sort();
   let lineNumbersLength = lineNumbers.length;
   let largestLineNumber = lineNumbers[lineNumbersLength - 1];

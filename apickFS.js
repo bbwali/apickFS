@@ -10,8 +10,17 @@ const fileOrFolderExists = require('./fileOrFolderExists');
 const removeStorageRecursively = require('./removeStorageRecursively');
 const getLinesCount = require('./getLinesCount');
 const readByLineNumbers = require('./readByLineNumbers');
+const writeLines = require('./writeLines');
 
 const apickJsonDb = {};
+
+/**
+ * Writes a line or several lines to the end of the file.
+ * @param {string} directoryPath full path to the directory.
+ * @param {string} fileName Name of the file with extension.
+ * @param <data or array of data> data can be a string, an object or an array. If its an object or an array, it will be parasd to a valid json. else it will be stored as a string.
+ */
+apickJsonDb.writeLines = writeLines;
 
 /**
  * returns a promise that resolves into total number of lines in the file.
