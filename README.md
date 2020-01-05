@@ -1,12 +1,12 @@
 <h1 align="center">
-  ApickFS (βETA)
+  ApickFS
 </h1>
 
 <h3 align="center">
   ✍🏻 📄 🍭
 </h3>
 <h3 align="center">
-  Modern File Storage library for Nodejs v12.14.0 and above. βETA release
+  Modern File Storage library for Nodejs v12.14.0 and above. 
 </h3>
 <p align="center">
   ApickFS is a free and open source File System library based on Node's fs.promises() that helps developers ditch callbacks and outdated depencencies.
@@ -19,6 +19,11 @@
   <a href="https://www.npmjs.com/package/apickfs">
     <img src="https://img.shields.io/npm/v/apickfs.svg" alt="Current npm package version." />
   </a>
+
+  <a href="https://www.linkedin.com/in/vivmagarwal/">
+    <img src="https://img.shields.io/badge/linkedin-in-blue?label=Follow%20@vivmagarwal" alt="Follow @vivmagarwal" />
+  </a>
+
 
   <a href="https://twitter.com/intent/follow?screen_name=vivmagarwal">
     <img src="https://img.shields.io/twitter/follow/vivmagarwal.svg?label=Follow%20@vivmagarwal" alt="Follow @gatsbyjs" />
@@ -49,25 +54,27 @@
 - **storageHander()**
 - **getLinesCount()**
 - **readByLineNumbers()**
+- **writeLines**
 
 <br>
 
 ## Parameter Combinations :
 
-| Parameter Combinations                                      | result                           | Description                                              |
-| ----------------------------------------------------------- | -------------------------------- | -------------------------------------------------------- |
-| `writeStorage(directoryPath)`                               | Success, Messge                  | Creates directory                                        |
-| `writeStorage(directoryPath , fieName)`                     | Success, Messge                  | Creates or Truncates file                                |
-| `writeStorage(directoryPath , fieName, data)`               | Success, Messge                  | Creates file. Adds or Overwrites file content with data. |
-| `readStorage(directoryPath, fileName)`                      | Success, Messge, Data            | Reads file                                               |
-| `removeStorage(directoryPath)`                              | Success, Messge                  | Removes directory                                        |
-| `removeStorage(directoryPath , fieName)`                    | Success, Messge                  | removes file                                             |
-| `removeStorage(directoryPath,null,true)`                    | Success, Messge                  | Removes directory recursively                            |
-| `removeStorageRecursively(directoryPath)`                   | Success, Messge                  | Removes directory recursively                            |
-| `fileOrFolderExists(<directory/file> path)`                 | true/false                       | Checks if a directory or a file exists                   |
-| `storageHander(<directory/file> path)`                      | true/false , file/directory      | Checks if a directory or a file exists and its type.     |
-| `getLinesCount(directoryPath, fileName)`                    | Success, Message, Count          | Returns total number of lines in the file                |
-| `readByLineNumbers(directory,filename, [array of lineNos])` | Success, Message, Array of lines | Returns an array of specific line numbers in the file    |
+| Parameter Combinations                                              | result                           | Description                                                                            |
+| ------------------------------------------------------------------- | -------------------------------- | -------------------------------------------------------------------------------------- |
+| `writeStorage(directoryPath)`                                       | Success, Messge                  | Creates directory                                                                      |
+| `writeStorage(directoryPath , fieName)`                             | Success, Messge                  | Creates or Truncates file                                                              |
+| `writeStorage(directoryPath , fieName, data)`                       | Success, Messge                  | Creates file. Adds or Overwrites file content with data.                               |
+| `readStorage(directoryPath, fileName)`                              | Success, Messge, Data            | Reads file                                                                             |
+| `removeStorage(directoryPath)`                                      | Success, Messge                  | Removes directory                                                                      |
+| `removeStorage(directoryPath , fieName)`                            | Success, Messge                  | removes file                                                                           |
+| `removeStorage(directoryPath,null,true)`                            | Success, Messge                  | Removes directory recursively                                                          |
+| `removeStorageRecursively(directoryPath)`                           | Success, Messge                  | Removes directory recursively                                                          |
+| `fileOrFolderExists(<directory/file> path)`                         | true/false                       | Checks if a directory or a file exists                                                 |
+| `storageHander(<directory/file> path)`                              | true/false , file/directory      | Checks if a directory or a file exists and its type.                                   |
+| `getLinesCount(directoryPath, fileName)`                            | Success, Message, Count          | Returns total number of lines in the file                                              |
+| `readByLineNumbers(directory,filename, lineNo or array of lineNos)` | Success, Message, Array of lines | Returns an array of specific line number(s) in the file                                |
+| `writeLines(directory,filename, data or array of data)`             | Success, Message                 | data can be a string, object or an array. They will be written at the end of the file. |
 
 <br>
 
@@ -459,12 +466,15 @@ apickFileStorage
 { exists: true, type: 'directory' }
 ```
 
+<br>
+
 ## Read Nth line or Read just specific lines:
 
 ```
 apickFileStorage
   //.readByLineNumbers(path.join(__dirname), 'big.txt', [100, 756, 88833, 163845])
-  .readByLineNumbers(path.join(__dirname), 'big.txt', [163845])
+  //  .readByLineNumbers(path.join(__dirname), 'big.txt', [163845])
+  .readByLineNumbers(path.join(__dirname), 'big.txt', 163845)
   .then(d => {
     console.log(d);
   })
@@ -476,3 +486,39 @@ apickFileStorage
 This method was successfully tested with upto 4 GB dense file.
 
 [big.text](https://1drv.ms/t/s!AtkMCsWInsSZiGptXYAFjalXOpUx) is a dense text file with 163,845 lines and is 124 Mbs. The script to read 10 lines from this file uses approximately 4.63 MB Memory only. And it parses valid JSON to Objects or Arrays for free. 🥳 Awesome!!
+
+<br>
+
+## Write lines of data at the end of the file.
+
+```
+apickFileStorage
+  .writeLines(path.join(__dirname), 'large.txt', {
+    number: 1,
+    hello: 'world',
+    love: 'javascript'
+  })
+  .then(d => {
+    console.log(d);
+  })
+  .catch(e => {
+    console.log(e);
+  });
+```
+
+Example of writing multiple lines at once :
+
+```
+apickFileStorage
+  .writeLines(path.join(__dirname), 'large.txt', [
+    'line one',
+    'line two',
+    { line: 'three' }
+  ])
+  .then(d => {
+    console.log(d);
+  })
+  .catch(e => {
+    console.log(e);
+  });
+```
