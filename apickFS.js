@@ -8,8 +8,28 @@ const removeStorage = require('./removeStorage');
 const readStorage = require('./readStorage');
 const fileOrFolderExists = require('./fileOrFolderExists');
 const removeStorageRecursively = require('./removeStorageRecursively');
+const getLinesCount = require('./getLinesCount');
+const readByLineNumbers = require('./readByLineNumbers');
 
 const apickJsonDb = {};
+
+/**
+ * returns a promise that resolves into total number of lines in the file.
+ * @param {string} directoryPath full path to the directory.
+ * @param {string} fileName Name of the file with extension.
+ */
+apickJsonDb.getLinesCount = getLinesCount;
+
+/**
+ * returns a promise that resolves into an object with following items:
+ * success: true/fase.
+ * message: a freidly success/failure message.
+ * data: array of lines.
+ * @param {string} directoryPath full path to the directory.
+ * @param {string} fileName Name of the file with extension.
+ * @param {array} lineNumbers Array of line numbers that we want to read.
+ */
+apickJsonDb.readByLineNumbers = readByLineNumbers;
 
 /**
  * returns a promise that resolves into true if it exists and false if it doesnot exist.
