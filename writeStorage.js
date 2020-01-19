@@ -7,6 +7,7 @@ module.exports = async function writeStorage(
   fileName = null,
   fileData = null
 ) {
+
   const directoryExists = await fileOrFolderExists(directoryPath);
 
   let fileExists = null;
@@ -17,21 +18,26 @@ module.exports = async function writeStorage(
 
   if (fileData) {
     if (typeof fileData === 'object') {
-      fileData = JSON.stringify(fileData, null, 2);
+      fileData = JSON.stringify(fileData);
     }
   }
 
   // if directory doesnot exists then create directory and file.
   if (!directoryExists) {
     try {
+
       await fsp.mkdir(directoryPath, { recursive: true });
 
       if (fileName) {
-        await fsp.writeFile(
-          path.join(directoryPath, fileName),
-          fileData ? fileData : ''
-        );
+        if (fileData){
+          await fsp.writeFile( path.join(directoryPath, fileName), fileData );
+        } else {
+          // await fsp.open(path.join(directoryPath, fileName),'a')
+          await fsp.writeFile( path.join(directoryPath, fileName), '' );
+        }
       }
+
+
       return {
         success: true,
         message: `SUCCESS: ${
@@ -47,10 +53,17 @@ module.exports = async function writeStorage(
     // if file name provided & file doesnot exist just go ahed and create it.
   } else if (directoryExists && fileName && !fileExists) {
     try {
-      await fsp.writeFile(
-        path.join(directoryPath, fileName),
-        fileData ? fileData : ''
-      );
+
+      if (fileData){
+        await fsp.writeFile(
+          path.join(directoryPath, fileName),
+          fileData
+        );
+      } else {
+        // await fsp.open(path.join(directoryPath, fileName),'a')
+        await fsp.writeFile( path.join(directoryPath, fileName), '' );
+      }
+      
       return {
         success: true,
         message: `SUCCESS: ${path.join(directoryPath, fileName)} created.`
@@ -63,10 +76,18 @@ module.exports = async function writeStorage(
     // if file exists, its doing the same thing as above, but i'm sure in future I'll have to change it.
   } else if (directoryExists && fileName && fileExists) {
     try {
-      await fsp.writeFile(
-        path.join(directoryPath, fileName),
-        fileData ? fileData : ''
-      );
+
+
+      if (fileData){
+        await fsp.writeFile(
+          path.join(directoryPath, fileName),
+          fileData
+        );
+      } else {
+        // await fsp.open(path.join(directoryPath, fileName),'a')
+        await fsp.writeFile( path.join(directoryPath, fileName), '' );
+      }
+
       return {
         success: true,
         message: `SUCCESS: ${path.join(directoryPath, fileName)} updated.`

@@ -19,15 +19,11 @@ module.exports = function readByLineNumbers(
   let directoryExists = false;
   let fileExists = false;
 
-  console.log('lineNumbers', lineNumbers);
-
   if (lineNumbers && !Array.isArray(lineNumbers)) {
     let temp = [];
     temp.push(lineNumbers);
     lineNumbers = temp;
   }
-
-  console.log('lineNumbers', lineNumbers);
 
   lineNumbers.sort();
   let lineNumbersLength = lineNumbers.length;
@@ -42,7 +38,10 @@ module.exports = function readByLineNumbers(
   try {
     directoryExists = fs.existsSync(directoryPath);
   } catch (error) {
-    return reject(console.error(error));
+    return resolve({
+      success: false,
+      message: error.toString()
+    });
   }
 
   try {
@@ -56,12 +55,12 @@ module.exports = function readByLineNumbers(
 
   return new Promise(function(resolve, reject) {
     if (!directoryExists) {
-      reject({
+      resolve({
         success: false,
         message: `Error: ${directoryPath} doesnot exist.`
       });
     } else if (directoryExists && !fileExists) {
-      reject({
+      resolve({
         success: false,
         message: `Error: ${path.join(directoryPath, fileName)} doesnot exist.`
       });
@@ -88,7 +87,7 @@ module.exports = function readByLineNumbers(
           currentLineNumberToSearch < 0 ||
           currentLineNumberToSearch % 1 !== 0
         ) {
-          reject({
+          resolve({
             success: false,
             message: `Error: ${fullFilePath} exists. But the lineNumber is invalid.`
           });
@@ -109,7 +108,7 @@ module.exports = function readByLineNumbers(
       });
 
       readableStream.on('end', function() {
-        reject(outOfRangeError(fullFilePath, currentLineNumberToSearch));
+        resolve(outOfRangeError(fullFilePath, currentLineNumberToSearch));
       });
     }
   });

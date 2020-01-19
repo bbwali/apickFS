@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
+const directoryExistsSync = require('./directoryExistsSync');
+const fileExistsSync = require('./fileExistsSync');
 
 /**
  * returns a promise that resolves into total number of lines in the file.
@@ -9,23 +11,31 @@ const readline = require('readline');
  */
 module.exports =  function getLinesCount(directoryPath, fileName) {
 
+  if (!directoryPath || !fileName){
+    return {
+      success: false,
+      message: 'both directory path and filename are required.',
+      data: null
+    }
+  }
+
   let directoryExists = false;
   let fileExists = false;
 
   const resultObject = {
     success: false,
     message: '',
-    data : 0,
+    data : null,
   };
 
   try {
-    directoryExists = fs.existsSync(directoryPath);
+    directoryExists = directoryExistsSync(directoryPath);
   } catch (error) {
       console.error(error)
   }
 
   try {
-    fileExists = !fileName || !directoryExists ? false : fs.existsSync(path.join(directoryPath, fileName));
+    fileExists = fileExistsSync(directoryPath, fileName);
   } catch (error) {
     console.error(error);
   }
@@ -33,37 +43,55 @@ module.exports =  function getLinesCount(directoryPath, fileName) {
   return new Promise(function(resolve,reject){
     
     if (!directoryExists) {
-      reject( {
+      resolve( {
         success: false,
-        message: `Error: ${directoryPath} doesnot exist.`
+        message: `Error: ${directoryPath} doesnot exist.`,
+        data: null
+
       });
     } else if (directoryExists && !fileExists) {
-      reject ({
+      resolve ({
         success: false,
-        message: `Error: ${path.join(directoryPath, fileName)} doesnot exist.`
+        message: `Error: ${path.join(directoryPath, fileName)} doesnot exist.`,
+        data: null
       });
     } else if (directoryExists && fileExists) {
-        const fullFilePath = path.join(directoryPath, fileName);
-        // actual reading of line
-        const readableStream =  fs.createReadStream(fullFilePath);
 
-        const rl = readline.createInterface({
-          input: readableStream,
-          crlfDelay: Infinity,
-        })
+    try {
+      const fullFilePath = path.join(directoryPath, fileName);
+      // actual reading of line
+      const readableStream =  fs.createReadStream(fullFilePath);
 
-        let index = 0;
+      const rl = readline.createInterface({
+        input: readableStream,
+        crlfDelay: Infinity,
+      })
 
-        rl.on('line',function(){
-          index++;
-        });
+      let index = 0;
 
-        rl.on('close',function(){
-          resultObject.success = true;
-          resultObject.message = `SUCCESS: ${fullFilePath} has total ${index} lines.`  
-          resultObject.data = index;
-          resolve(resultObject);
-        })
+      rl.on('line',function(){
+        index++;
+      });
+
+      rl.on('error', reject)
+
+      readableStream.on('end', function(){
+        rl.close()
+        readableStream.close()
+
+        resultObject.success = true;
+        resultObject.message = `SUCCESS: ${fullFilePath} has total ${index} lines.`  
+        resultObject.data = index;
+
+        resolve(resultObject);
+      })
+    } catch (error) {
+      resolve({
+        success: false,
+        message: `ERROR: ${error.toString()}`,
+        data: null
+      })
+    }
       }
     })
 };
