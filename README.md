@@ -25,8 +25,15 @@
     <img src="https://img.shields.io/twitter/follow/vivmagarwal.svg?label=Follow%20@vivmagarwal" alt="Follow @apickjs" />
   </a>
 </p>
+<br>
 
-## Why ApickFS:
+## 🎓 Learning ApickFS
+
+Full documentation for ApickFS lives [on the website](https://apickjs.github.io/apickFS/#/README).
+
+<br>
+
+## 🧩 Why ApickFS:
 
 - **Based on cutting edge fs.promises**
 - **Async Awiat based code**
@@ -40,36 +47,38 @@
 
 <br>
 
-## Available Methods:
+## 🎰 Available Methods:
+
+*Please click on the below method names to go to the documentation of that function*
 
 **File opeations**
 
-- fileExists()
-- fileExistsSync()
-- readByLineNumbers()
-- getLinesCount()
-- writeLines()
-- deleteFile()
-- openFile()
-- writeFile()
+- [fileExists()](https://apickjs.github.io/apickFS/#/README?id=fileexists)
+- [fileExistsSync()](https://apickjs.github.io/apickFS/#/README?id=fileexistssync)
+- [readByLineNumbers()](https://apickjs.github.io/apickFS/#/README?id=readbylinenumbers)
+- [getLinesCount()](https://apickjs.github.io/apickFS/#/README?id=getlinescount)
+- [writeLines()](https://apickjs.github.io/apickFS/#/README?id=writelines)
+- [deleteFile()](https://apickjs.github.io/apickFS/#/README?id=deletefile)
+- [openFile()](https://apickjs.github.io/apickFS/#/README?id=openfile)
+- [writeFile()](https://apickjs.github.io/apickFS/#/README?id=writefile)
 
 **Directory operations**
 
-- directoryExists()
-- directoryExistsSync()
-- getDirectoryEntries()
-- deleteDirectory()
-- openDirectory()
-- writeDirectory()
+- [directoryExists()](https://apickjs.github.io/apickFS/#/README?id=directoryexists)
+- [directoryExistsSync()](https://apickjs.github.io/apickFS/#/README?id=directoryexistssync)
+- [getDirectoryEntries()](https://apickjs.github.io/apickFS/#/README?id=getdirectoryentries)
+- [deleteDirectory()](https://apickjs.github.io/apickFS/#/README?id=deletedirectory)
+- [openDirectory()](https://apickjs.github.io/apickFS/#/README?id=opendirectory)
+- [writeDirectory()](https://apickjs.github.io/apickFS/#/README?id=writedirectory)
 
 **Low level functions**
 
-- fileOrFolderExists()
-- readStorage()
-- removeStorage()
-- removeStorageRecursively()
-- storageHandler()
-- writeStorage()
+- [fileOrFolderExists()](https://apickjs.github.io/apickFS/#/README?id=fileorfolderexists)
+- [readStorage()](https://apickjs.github.io/apickFS/#/README?id=readstorage)
+- [removeStorage()](https://apickjs.github.io/apickFS/#/README?id=removestorage)
+- [removeStorageRecursively()](https://apickjs.github.io/apickFS/#/README?id=removestoragerecursively)
+- [storageHandler()](https://apickjs.github.io/apickFS/#/README?id=storagehandler)
+- [writeStorage()](https://apickjs.github.io/apickFS/#/README?id=writestorage)
 
 ## Important Notes
 
@@ -1326,7 +1335,7 @@ apickFileStorage
 })();
 ```
 
-### Outside an async function :
+**Outside an async function :**
 
 ```javascript
 apickFileStorage
