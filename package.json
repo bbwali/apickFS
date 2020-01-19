@@ -1,19 +1,42 @@
 {
-  "name": "apickfs",
-  "version": "12.0.5",
+  "_from": "apickfs@^12.0.5",
+  "_id": "apickfs@12.0.5",
+  "_inBundle": false,
+  "_integrity": "sha512-s8kvRgiZR2d813V3TgnIxvloyu32nZxxAjVmh4u+mkEYbEd3fEEYUgCkk30uDPvMR2X1WjUewcCbgaOWdK6Cyg==",
+  "_location": "/apickfs",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "apickfs@^12.0.5",
+    "name": "apickfs",
+    "escapedName": "apickfs",
+    "rawSpec": "^12.0.5",
+    "saveSpec": null,
+    "fetchSpec": "^12.0.5"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/apickfs/-/apickfs-12.0.5.tgz",
+  "_shasum": "6505c23e194c863a1d27cd0b07404127c1a9c277",
+  "_spec": "apickfs@^12.0.5",
+  "_where": "/Users/vivek/practice-apps/brad-cli",
+  "author": {
+    "name": "Vivek M Agarwal"
+  },
+  "bugs": {
+    "url": "https://github.com/apickjs/apickFS/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
   "description": "Modern and Minimal File system for Nodejs using promises and async await. No callback hell. No dependency hell.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/apickjs/apickFS.git"
-  },
   "engines": {
     "node": ">=12.14.0",
     "npm": ">=6.13.4"
   },
+  "homepage": "https://github.com/apickjs/apickFS#readme",
   "keywords": [
     "fs",
     "filesystem",
@@ -28,10 +51,33 @@
     "directory",
     "folders"
   ],
-  "author": "Vivek M Agarwal",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/apickjs/apickFS/issues"
+  "main": "index.js",
+  "name": "apickfs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apickjs/apickFS.git"
   },
-  "homepage": "https://github.com/apickjs/apickFS#readme"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "12.2.0",
+  "warnings": [
+    {
+      "code": "ENOTSUP",
+      "required": {
+        "node": ">=12.14.0",
+        "npm": ">=6.13.4"
+      },
+      "pkgid": "apickfs@12.0.5"
+    },
+    {
+      "code": "ENOTSUP",
+      "required": {
+        "node": ">=12.14.0",
+        "npm": ">=6.13.4"
+      },
+      "pkgid": "apickfs@12.0.5"
+    }
+  ]
 }

@@ -17,6 +17,30 @@ All notable changes to this project will be documented in this file.
 - writeLines() Extremely fast way to write data at the end of a file.
 - versioning system changed. 12.x means that we support LTS release of nodejs v.12.
 
+## [12.1.1] - 2020-01-14
+
+### Added
+
+- readFile()
+- fileExistsSync()
+- directoryExistsSync()
+- fileExists()
+- directoryExists()
+- openDirectory()
+- openFile()
+
+Tree shaking capability. Just import the function you require.
+
+### Deprecated
+
+- readStorage() Reason: readStorage is basically readFile with complexities.
+
+## [12.2.0] - 2020-01-19
+
+### Added
+
+- getDirectoryEntries()
+
 </b>
 
 ## [Unreleased]

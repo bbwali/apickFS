@@ -1,18 +1,10 @@
 const fsp = require('fs').promises;
 const path = require('path');
 const fileOrFolderExists = require('./fileOrFolderExists');
-const deprecate = require('depd')('apickFS');
 
 // @todo - the purpose of this module is just to read files. not folders. so, its better to call it readFile
 
-module.exports = async function readStorage(directoryPath, fileName) {
-
-  deprecate(`Support for readStorage will be removed in the next major relase. Please use
-                   readFile : to read the content of a file
-                   openFile : return true if exists,dont touch it, else create a new empty file
-                   writeStorage : to create or overwrite existing file.
-  `)
-
+module.exports = async function readFile(directoryPath, fileName) {
   const directoryExists = await fileOrFolderExists(directoryPath);
   const fileExists = !fileName
     ? null

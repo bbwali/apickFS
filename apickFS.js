@@ -11,6 +11,17 @@ const removeStorageRecursively = require('./removeStorageRecursively');
 const getLinesCount = require('./getLinesCount');
 const readByLineNumbers = require('./readByLineNumbers');
 const writeLines = require('./writeLines');
+const fileExists = require('./fileExists');
+const directoryExists = require('./directoryExists');
+const fileExistsSync = require('./fileExistsSync');
+const directoryExistsSync = require('./directoryExistsSync');
+const openDirectory = require('./openDirectory');
+const openFile = require('./openFile');
+const writeFile = require('./writeFile');
+const deleteFile = require('./deleteFile');
+const deleteDirectory = require('./deleteDirectory');
+const getDirectoryEntries = require('./getDirectoryEntries');
+const writeDirectory = require('./writeDirectory');
 
 const apickJsonDb = {};
 
@@ -109,6 +120,23 @@ apickJsonDb.removeStorageRecursively = removeStorageRecursively;
  * });
  */
 
-apickJsonDb.readStorage = readStorage;
+apickJsonDb.readStorage = readStorage; // depriciated and will be removed in favour of readFile. the name readStorage is a bit confusing.
+apickJsonDb.readFile = readStorage;
+
+apickJsonDb.fileExistsSync = fileExistsSync; // just returns true or false
+apickJsonDb.directoryExistsSync = directoryExistsSync; // just returns true or fase
+
+apickJsonDb.fileExists = fileExists; // promise resolves to true or false
+apickJsonDb.directoryExists = directoryExists; // promise resolves to true or false
+
+apickJsonDb.openDirectory = openDirectory; // if exists returns success:true, else creates one and returns success:ture with a user friendly message.
+apickJsonDb.openFile = openFile;
+
+apickJsonDb.writeFile = writeFile;
+apickJsonDb.deleteFile = deleteFile;
+
+apickJsonDb.deleteDirectory = deleteDirectory;
+apickJsonDb.getDirectoryEntries = getDirectoryEntries;
+apickJsonDb.writeDirectory = writeDirectory;
 
 module.exports = apickJsonDb;
