@@ -1,2 +1,2 @@
 - **Getting Started**
-- [**Introduction**](getting-started.md)
+- [**Introduction**](README.md)
